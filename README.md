@@ -5,3 +5,11 @@ DDL: 10-25
 2. yihan 负责 建github的库
 3. Ziyue: github CICD 配置
 4. 大王： 负责查一下不同opencv 版本，gpu/ 非gpu版本 
+
+```
+mkdir build
+cd build
+cmake ..
+make
+./ORBExtractor ../train4.jpg output_descriptors.txt
+```
