@@ -39,7 +39,7 @@ jobs:
         cd cv_build
         cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local  -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules/ -D WITH_TBB=OFF  -D WITH_CUDA=OFF -D BUILD_opencv_gpu=OFF -D BUILD_opencv_gpuarithm=OFF -D OPENCV_GENERATE_PKGCONFIG=ON ../opencv
         make -j$(nproc --all)
-        make install
+        sudo make install
 
     - name: Build 
       run: |
