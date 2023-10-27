@@ -26,7 +26,6 @@ jobs:
                 python3-pip\
                 libpython2-dev \
                 libpython2-dev:arm64  \
-                python-numpy \
                 python3-numpy
 
     - name: Fetch opencv and opencv_contrib
