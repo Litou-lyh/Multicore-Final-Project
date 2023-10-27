@@ -23,8 +23,8 @@ jobs:
                 crossbuild-essential-arm64 \
                 git \
                 cmake \
-                libpython-dev \
-                libpython3-dev \
+                libpython2-dev \
+                libpython2-dev:arm64  \
                 python-numpy \
                 python3-numpy
 
