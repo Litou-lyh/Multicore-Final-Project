@@ -1,0 +1,51 @@
+name: CI Build
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependency packages
+      run: |
+        sudo sed -i -E 's|^deb ([^ ]+) (.*)$|deb [arch=amd64] \1 \2\ndeb [arch=arm64] http://ports.ubuntu.com/ubuntu-ports/ \2|' /etc/apt/sources.list
+        sudo dpkg --add-architecture arm64
+        sudo apt-get update
+        sudo apt-get install -y --no-install-recommends \
+                crossbuild-essential-arm64 \
+                git \
+                cmake \
+                libpython-dev:arm64 \
+                libpython3-dev:arm64 \
+                python-numpy \
+                python3-numpy
+
+    - name: Fetch opencv and opencv_contrib
+      run: |
+        git clone https://github.com/opencv/opencv.git 
+        git clone https://github.com/opencv/opencv_contrib.git
+
+    - name: Configure and Build Opencv
+      run: |
+        mkdir cv_build
+        cd cv_build
+        cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local  -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules/ -D WITH_TBB=OFF  -D WITH_CUDA=OFF -D BUILD_opencv_gpu=OFF -D BUILD_opencv_gpuarithm=OFF -D OPENCV_GENERATE_PKGCONFIG=ON ../opencv
+        make -j$(nproc --all)
+        make install
+        
+    - name: Build 
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make
+        ./ORBExtractor ../train4.jpg output_descriptors.txt
+        
