@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 diff ./output_descriptors.txt ./build/output_descriptors.txt > log.txt
 
 if [[ -s log.txt ]] ; then
