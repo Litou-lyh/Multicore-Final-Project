@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 diff ./output_descriptors.txt ./build/output_descriptors.txt > log.txt
 
