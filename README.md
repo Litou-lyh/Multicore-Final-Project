@@ -14,7 +14,7 @@
 
 ## Compile OpenCV with CUDA on cuda5.cims.nyu.edu
 
-See `./opencv/opencv_compile.txt`
+See `./opencv_compile/opencv_compile.txt`
 
 
 
