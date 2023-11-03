@@ -1,11 +1,10 @@
 # Multicore-Final-Project
 
-DDL: 10-25
-1. Chenyu 负责配置opencv的文档，然后每个人在自己服务器帐号上配置好
-2. yihan 负责 建github的库
-3. Ziyue: github CICD 配置
-4. 大王： 负责查一下不同opencv 版本，gpu/ 非gpu版本 
+点击Notion链接查看自己的任务
+[Notion Task List](https://www.notion.so/307a05aec2e24f13a39f778f6f9c1126?v=2e692dd61dc944e99d47bba17e807b30)
 
+
+## Run:
 ```
 mkdir build
 cd build
