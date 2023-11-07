@@ -11,5 +11,7 @@ mkdir build
 cd build
 cmake ..
 make
-./ORBExtractor ../train4.jpg output_descriptors.txt
+./ORBExtractor ../train4.jpg ../keypoints.txt ../descriptor_test.txt
 ```
+
+```Usage: ./feature_extractor <path_to_image> <path_to_keypoints_file> <path_to_descriptors_file>```
