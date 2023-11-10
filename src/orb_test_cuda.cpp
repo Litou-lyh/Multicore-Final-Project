@@ -2,7 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <opencv2/opencv.hpp>
-#include <opencv2/features2d.hpp>
+#include <opencv2/cudafeatures2d.hpp>
 
 void writeKeypoints(const std::vector<cv::KeyPoint>& keypoints, const std::string& filename) {
     std::ofstream outputFile(filename);
@@ -93,11 +93,21 @@ int main(int argc, char** argv) {
     }
 
     // Initialize ORB detector
-    cv::Ptr<cv::ORB> orb = cv::ORB::create();
+    cv::Ptr<cv::cuda::ORB> orb = cv::cuda::ORB::create();
+
+    // Initialize cuda Mats
+    cv::cuda::GpuMat image_gpu;
+    cv::cuda::GpuMat descriptors_gpu;
+
+    // upload image to gpu
+    image_gpu.upload(image);
 
     // Compute descriptors for the detected keypoints
     cv::Mat descriptors;
-    orb->compute(image, keypoints, descriptors);
+    orb->compute(image_gpu, keypoints, descriptors_gpu);
+
+    // download image from gpu
+    descriptors_gpu.download(descriptors);
 
     // Write descriptors to file
     try {
