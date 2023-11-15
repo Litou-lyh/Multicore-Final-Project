@@ -1,13 +1,11 @@
 name: CI Build
 on:
   push:
-    paths:
-      - "**"
-      - "!.github/**"
-      - ".github/workflows/Ubuntu.yml"
-      - "!scripts/"
-      - "scripts/actions/install_cuda_ubuntu.sh"
-      - "!*.md"
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
