@@ -24,7 +24,7 @@ jobs:
             cuda: "11.8"
             gcc: 10
     env:
-      build_dir: "build"
+      build_dir: "build_dir"
       config: "Release"
 
     steps:
@@ -49,7 +49,7 @@ jobs:
       run: |
         git clone https://github.com/opencv/opencv.git 
         git clone https://github.com/opencv/opencv_contrib.git
-        
+
     - name: Configure cmake
       id: configure
       run: cmake . -B ${{ env.build_dir }} -DCMAKE_BUILD_TYPE=${{ env.config }}
