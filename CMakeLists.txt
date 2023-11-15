@@ -6,8 +6,6 @@ set(CXX_STANDARD C++11)
 
 # set(OpenCV_DIR /home/yl10798/opencv-gpu-4.8.0/)
 # set(OpenCV_INCLUDE_DIRS /home/yl10798/opencv-gpu-4.8.0/include/opencv4)
-set(OpenCV_DIR /usr/local/lib)
-set(OpenCV_INCLUDE_DIRS /usr/local/include/opencv4)
 find_package(OpenCV REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
