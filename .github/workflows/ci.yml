@@ -45,7 +45,11 @@ jobs:
         echo "CC=/usr/bin/gcc-${{ matrix.gcc }}" >> $GITHUB_ENV
         echo "CXX=/usr/bin/g++-${{ matrix.gcc }}" >> $GITHUB_ENV
         echo "CUDAHOSTCXX=/usr/bin/g++-${{ matrix.gcc }}" >> $GITHUB_ENV
-
+    - name: Fetch opencv and opencv_contrib
+      run: |
+        git clone https://github.com/opencv/opencv.git 
+        git clone https://github.com/opencv/opencv_contrib.git
+        
     - name: Configure cmake
       id: configure
       run: cmake . -B ${{ env.build_dir }} -DCMAKE_BUILD_TYPE=${{ env.config }}
@@ -81,10 +85,7 @@ jobs:
                 libpython2-dev:arm64  \
                 python3-numpy
 
-    - name: Fetch opencv and opencv_contrib
-      run: |
-        git clone https://github.com/opencv/opencv.git 
-        git clone https://github.com/opencv/opencv_contrib.git
+   
 
     - name: Configure and Build Opencv
       run: |
