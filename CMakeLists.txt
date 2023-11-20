@@ -18,7 +18,7 @@ set(CXX_STANDARD C++11)
 
 # set(OpenCV_DIR /home/yl10798/opencv-gpu-4.8.0/)
 # set(OpenCV_INCLUDE_DIRS /home/yl10798/opencv-gpu-4.8.0/include/opencv4)
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 4.5 REQUIRED)
 
 # Include directories for both OpenCV and your project headers
 include_directories(${OpenCV_INCLUDE_DIRS})
