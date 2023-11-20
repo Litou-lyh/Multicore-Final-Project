@@ -63,13 +63,11 @@ int main(int argc, char** argv) {
 
     // Load the image
     cv::Mat image = cv::imread(argv[1], cv::IMREAD_GRAYSCALE);
+
     if (image.empty()) {
         std::cout << "Could not open or find the image!" << std::endl;
         return -1;
     }
-
-    // Initialize ORB detector
-    cv::Ptr<cv::ORB> orb = cv::ORB::create();
 
     // Detect keypoints
     // std::vector<cv::KeyPoint> keypoints;
@@ -94,6 +92,8 @@ int main(int argc, char** argv) {
         return -1;
     }
 
+    // Initialize ORB detector
+    cv::Ptr<cv::ORB> orb = cv::ORB::create();
 
     // Compute descriptors for the detected keypoints
     cv::Mat descriptors;
@@ -110,3 +110,22 @@ int main(int argc, char** argv) {
 
     return 0;
 }
+// #include <opencv2/opencv.hpp>
+// using namespace cv;
+// using namespace std;
+ 
+// int main( int argc, char** argv )
+// {
+//   cout << "OpenCV version : " << CV_VERSION << endl;
+//   cout << "Major version : " << CV_MAJOR_VERSION << endl;
+//   cout << "Minor version : " << CV_MINOR_VERSION << endl;
+//   cout << "Subminor version : " << CV_SUBMINOR_VERSION << endl;
+ 
+//   if ( CV_MAJOR_VERSION < 3)
+//   {
+//       // Old OpenCV 2 code goes here.
+//   } else
+//   {
+//       // New OpenCV 3 code goes here.
+//   }
+// }
