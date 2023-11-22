@@ -62,7 +62,7 @@ void Feature2D::detect( InputArray image,
 {
     // CV_INSTRUMENT_REGION();
 
-    if( image.empty() )
+    if ( image.empty() )
     {
         keypoints.clear();
         return;
@@ -88,10 +88,10 @@ void Feature2D::detect( InputArrayOfArrays images,
 
     if (images.isMatVector())
     {
-       for (int i = 0; i < nimages; i++)
-       {
-           detect(images.getMat(i), keypoints[i], masks.empty() ? noArray() : masks.getMat(i));
-       }
+        for (int i = 0; i < nimages; i++)
+        {
+            detect(images.getMat(i), keypoints[i], masks.empty() ? noArray() : masks.getMat(i));
+        }
     }
     else
     {
@@ -117,12 +117,11 @@ void Feature2D::compute( InputArray image,
 {
     // CV_INSTRUMENT_REGION();
 
-    if( image.empty() )
+    if ( image.empty() )
     {
         descriptors.release();
         return;
     }
-    std::cout<<"line 125"<<std::endl;
     detectAndCompute(image, noArray(), keypoints, descriptors, true);
 }
 
@@ -132,7 +131,7 @@ void Feature2D::compute( InputArrayOfArrays images,
 {
     // CV_INSTRUMENT_REGION();
 
-    if( !descriptors.needed() )
+    if ( !descriptors.needed() )
         return;
 
     int nimages = (int)images.total();
