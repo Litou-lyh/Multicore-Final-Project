@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/yl10798/work/multicore/Multicore-Final-Project/code/parallel/include -isystem /usr/local/include/opencv4
 
-CXX_FLAGS = -std=gnu++11 -fopenmp
+CXX_FLAGS = -std=gnu++11
 

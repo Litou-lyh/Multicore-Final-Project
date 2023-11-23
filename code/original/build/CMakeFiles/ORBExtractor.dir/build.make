@@ -192,8 +192,6 @@ ORBExtractor: /usr/local/lib64/libopencv_flann.so.4.8.0
 ORBExtractor: /usr/local/lib64/libopencv_photo.so.4.8.0
 ORBExtractor: /usr/local/lib64/libopencv_imgproc.so.4.8.0
 ORBExtractor: /usr/local/lib64/libopencv_core.so.4.8.0
-ORBExtractor: /usr/lib/gcc/x86_64-redhat-linux/4.8.5/libgomp.so
-ORBExtractor: /usr/lib64/libpthread.so
 ORBExtractor: CMakeFiles/ORBExtractor.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/yl10798/work/multicore/Multicore-Final-Project/code/parallel/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ORBExtractor"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ORBExtractor.dir/link.txt --verbose=$(VERBOSE)
