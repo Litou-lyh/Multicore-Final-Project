@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/yl10798/work/multicore/Multicore-Final-Project/code/parallel/include -isystem /usr/local/include/opencv4
+CXX_INCLUDES = -I/home/yl10798/work/multicore/Multicore-Final-Project/code/yihan_attempt_on_desp_compute/include -isystem /usr/local/include/opencv4
 
-CXX_FLAGS = -std=gnu++11
+CXX_FLAGS = -std=gnu++11 -fopenmp
 

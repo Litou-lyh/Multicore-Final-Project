@@ -103,8 +103,8 @@ computeOrbDescriptors( const Mat& imagePyramid, const std::vector<Rect>& layerIn
   // int j, i, nkeypoints = (int)keypoints.size();
 
   // TODO: parallel
-  double start = omp_get_wtime();
-  // # pragma omp parallel for
+  double desp_compute_start = omp_get_wtime();
+  # pragma omp parallel for
   for (int j = 0; j < nkeypoints; j++ ) {
     const KeyPoint& kpt = keypoints[j];
     const Rect& layer = layerInfo[kpt.octave];
@@ -218,8 +218,11 @@ computeOrbDescriptors( const Mat& imagePyramid, const std::vector<Rect>& layerIn
 
 #undef GET_VALUE
   }
-  double end = omp_get_wtime();
-  printf("[Exec time]: %.8lf\n", (end - start) * 1000000);
+  double desp_compute_end = omp_get_wtime();
+  printf("[Desp Comp Time]: %.4lf us : from %.4lf to %.4lf\n",
+         (desp_compute_end - desp_compute_start) * 1000000,
+         desp_compute_start * 1000000,
+         desp_compute_end * 1000000);
 }
 
 
@@ -907,6 +910,7 @@ void ORB_Impl::detectAndCompute( InputArray _image, InputArray _mask,
   }
 
   if ( do_descriptors ) {
+    double do_desp_start = omp_get_wtime();
     int dsize = descriptorSize();
 
     nkeypoints = (int)keypoints.size();
@@ -948,6 +952,12 @@ void ORB_Impl::detectAndCompute( InputArray _image, InputArray _mask,
       computeOrbDescriptors(imagePyramid, layerInfo, layerScale,
                             keypoints, descriptors, pattern, dsize, wta_k);
     }
+    double do_desp_end = omp_get_wtime();
+    printf("[Do Desp Time]: %.4lf us : from %.4lf to %.4lf\n",
+           (do_desp_end - do_desp_start) * 1000000,
+           do_desp_start * 1000000,
+           do_desp_end * 1000000);
+
   }
 }
 

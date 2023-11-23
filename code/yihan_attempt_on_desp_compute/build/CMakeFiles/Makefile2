@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yl10798/work/multicore/Multicore-Final-Project/code/parallel
+CMAKE_SOURCE_DIR = /home/yl10798/work/multicore/Multicore-Final-Project/code/yihan_attempt_on_desp_compute
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yl10798/work/multicore/Multicore-Final-Project/code/parallel/build
+CMAKE_BINARY_DIR = /home/yl10798/work/multicore/Multicore-Final-Project/code/yihan_attempt_on_desp_compute/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/ORBExtractor.dir/clean
 CMakeFiles/ORBExtractor.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ORBExtractor.dir/build.make CMakeFiles/ORBExtractor.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ORBExtractor.dir/build.make CMakeFiles/ORBExtractor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/yl10798/work/multicore/Multicore-Final-Project/code/parallel/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target ORBExtractor"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/yl10798/work/multicore/Multicore-Final-Project/code/yihan_attempt_on_desp_compute/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target ORBExtractor"
 .PHONY : CMakeFiles/ORBExtractor.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/ORBExtractor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yl10798/work/multicore/Multicore-Final-Project/code/parallel/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yl10798/work/multicore/Multicore-Final-Project/code/yihan_attempt_on_desp_compute/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ORBExtractor.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yl10798/work/multicore/Multicore-Final-Project/code/parallel/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yl10798/work/multicore/Multicore-Final-Project/code/yihan_attempt_on_desp_compute/build/CMakeFiles 0
 .PHONY : CMakeFiles/ORBExtractor.dir/rule
 
 # Convenience name for target.

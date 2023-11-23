@@ -1,3 +1,3 @@
-/home/yl10798/work/multicore/Multicore-Final-Project/code/parallel/build/CMakeFiles/ORBExtractor.dir
-/home/yl10798/work/multicore/Multicore-Final-Project/code/parallel/build/CMakeFiles/edit_cache.dir
-/home/yl10798/work/multicore/Multicore-Final-Project/code/parallel/build/CMakeFiles/rebuild_cache.dir
+/home/yl10798/work/multicore/Multicore-Final-Project/code/yihan_attempt_on_desp_compute/build/CMakeFiles/ORBExtractor.dir
+/home/yl10798/work/multicore/Multicore-Final-Project/code/yihan_attempt_on_desp_compute/build/CMakeFiles/edit_cache.dir
+/home/yl10798/work/multicore/Multicore-Final-Project/code/yihan_attempt_on_desp_compute/build/CMakeFiles/rebuild_cache.dir

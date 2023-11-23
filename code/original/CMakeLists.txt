@@ -14,6 +14,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(ORBExtractor)
 set(CXX_STANDARD C++11)
+set(DCMAKE_BUILD_TYPE Debug)
 
 
 # !!! Important
@@ -30,6 +31,7 @@ set(CXX_STANDARD C++11)
 
 # common version / github CICD
 find_package(OpenCV REQUIRED)
+find_package(OpenMP REQUIRED)
 
 # Include directories for both OpenCV and your project headers
 include_directories(${OpenCV_INCLUDE_DIRS})
@@ -48,5 +50,9 @@ set(SOURCE_FILES
 add_executable(ORBExtractor ${SOURCE_FILES})
 
 # Link the OpenCV libraries with your executable
-target_link_libraries(ORBExtractor ${OpenCV_LIBS})
+target_link_libraries(ORBExtractor PUBLIC ${OpenCV_LIBS} OpenMP::OpenMP_CXX)
+
+# if(OpenMP_CXX_FOUND)
+#    target_link_libraries(ORBExtractor PUBLIC OpenMP::OpenMP_CXX)
+# endif()
 
