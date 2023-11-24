@@ -104,119 +104,63 @@ computeOrbDescriptors( const Mat& imagePyramid, const std::vector<Rect>& layerIn
 
   // TODO: parallel
   double desp_compute_start = omp_get_wtime();
-  # pragma omp parallel for
-  for (int j = 0; j < nkeypoints; j++ ) {
-    const KeyPoint& kpt = keypoints[j];
-    const Rect& layer = layerInfo[kpt.octave];
-    float scale = 1.f / layerScale[kpt.octave];
-    float angle = kpt.angle;
 
-    angle *= (float)(CV_PI / 180.f);
-    float a = (float)cos(angle), b = (float)sin(angle);
+  float a[nkeypoints];
+  float b[nkeypoints];
+  const uchar* center[nkeypoints];
 
-    const uchar* center = &imagePyramid.at<uchar>(cvRound(kpt.pt.y * scale) + layer.y,
-                          cvRound(kpt.pt.x * scale) + layer.x);
-    float x, y;
-    int ix, iy;
-    const Point* pattern = &_pattern[0];
-    uchar* desc = descriptors.ptr<uchar>(j);
-
-# define GET_VALUE(idx) \
-  (x = pattern[idx].x*a - pattern[idx].y*b, \
-   y = pattern[idx].x*b + pattern[idx].y*a, \
+# define GET_VALUE(idx, j) \
+  (x = pattern[idx].x*a[j] - pattern[idx].y*b[j], \
+   y = pattern[idx].x*b[j] + pattern[idx].y*a[j], \
    ix = cvRound(x), \
    iy = cvRound(y), \
-   *(center + iy*step + ix) )
+   *(center[j] + iy*step + ix) )
 
+  # pragma omp parallel num_threads(4)
+  {
 
-    // TODO: parallel, consider wta_k = 2 first
-    // if ( wta_k == 2 ) {
-    // # pragma omp parallel for private(x, y, ix, iy, pattern)
-    // # pragma omp task private(x, y, ix, iy, pattern)
-    for (int i = 0; i < dsize; ++i) { // ++i pattern += 16
-      pattern = &_pattern[0] + i * 16;
+    # pragma omp for schedule(dynamic)
+    for (int j = 0; j < nkeypoints; j++) {
+      const KeyPoint& kpt = keypoints[j];
+      const Rect& layer = layerInfo[kpt.octave];
+      a[j] = (float)cos(kpt.angle * (float)(CV_PI / 180.f));
+      b[j] = (float)sin(kpt.angle * (float)(CV_PI / 180.f));
+      center[j] = &imagePyramid.at<uchar>(cvRound(kpt.pt.y * (1.f / layerScale[kpt.octave])) + layerInfo[kpt.octave].y,
+                                          cvRound(kpt.pt.x * (1.f / layerScale[kpt.octave])) + layerInfo[kpt.octave].x);
+    }
+
+    # pragma omp for schedule(dynamic)
+    for (int j = 0; j < nkeypoints * dsize; j++ ) {
+      int k = j / dsize;
+      int i = j % dsize;
+      const Point* pattern = &_pattern[0] +  i * 16;
+
+      float x, y;
+      int ix, iy;
+
+      uchar* desc = descriptors.ptr<uchar>(k);
+
       int t0, t1, val;
-      t0 = GET_VALUE(0); t1 = GET_VALUE(1);
+      t0 = GET_VALUE(0, k); t1 = GET_VALUE(1, k);
       val = t0 < t1;
-      t0 = GET_VALUE(2); t1 = GET_VALUE(3);
+      t0 = GET_VALUE(2, k); t1 = GET_VALUE(3, k);
       val |= (t0 < t1) << 1;
-      t0 = GET_VALUE(4); t1 = GET_VALUE(5);
+      t0 = GET_VALUE(4, k); t1 = GET_VALUE(5, k);
       val |= (t0 < t1) << 2;
-      t0 = GET_VALUE(6); t1 = GET_VALUE(7);
+      t0 = GET_VALUE(6, k); t1 = GET_VALUE(7, k);
       val |= (t0 < t1) << 3;
-      t0 = GET_VALUE(8); t1 = GET_VALUE(9);
+      t0 = GET_VALUE(8, k); t1 = GET_VALUE(9, k);
       val |= (t0 < t1) << 4;
-      t0 = GET_VALUE(10); t1 = GET_VALUE(11);
+      t0 = GET_VALUE(10, k); t1 = GET_VALUE(11, k);
       val |= (t0 < t1) << 5;
-      t0 = GET_VALUE(12); t1 = GET_VALUE(13);
+      t0 = GET_VALUE(12, k); t1 = GET_VALUE(13, k);
       val |= (t0 < t1) << 6;
-      t0 = GET_VALUE(14); t1 = GET_VALUE(15);
+      t0 = GET_VALUE(14, k); t1 = GET_VALUE(15, k);
       val |= (t0 < t1) << 7;
-      // if (j == 0)
-      //     printf("thread %d: %d, %08x, %d, %d, %d\n", omp_get_thread_num(), i, pattern, t0, t1, val);
-
       desc[i] = (uchar)val;
 
+// #undef GET_VALUE
     }
-    // } else if ( wta_k == 3 ) {
-    //   for (i = 0; i < dsize; ++i, pattern += 12) {
-    //     int t0, t1, t2, val;
-    //     t0 = GET_VALUE(0); t1 = GET_VALUE(1); t2 = GET_VALUE(2);
-    //     val = t2 > t1 ? (t2 > t0 ? 2 : 0) : (t1 > t0);
-
-    //     t0 = GET_VALUE(3); t1 = GET_VALUE(4); t2 = GET_VALUE(5);
-    //     val |= (t2 > t1 ? (t2 > t0 ? 2 : 0) : (t1 > t0)) << 2;
-
-    //     t0 = GET_VALUE(6); t1 = GET_VALUE(7); t2 = GET_VALUE(8);
-    //     val |= (t2 > t1 ? (t2 > t0 ? 2 : 0) : (t1 > t0)) << 4;
-
-    //     t0 = GET_VALUE(9); t1 = GET_VALUE(10); t2 = GET_VALUE(11);
-    //     val |= (t2 > t1 ? (t2 > t0 ? 2 : 0) : (t1 > t0)) << 6;
-
-    //     desc[i] = (uchar)val;
-    //   }
-    // } else if ( wta_k == 4 ) {
-    //   for (i = 0; i < dsize; ++i, pattern += 16) {
-    //     int t0, t1, t2, t3, u, v, k, val;
-    //     t0 = GET_VALUE(0); t1 = GET_VALUE(1);
-    //     t2 = GET_VALUE(2); t3 = GET_VALUE(3);
-    //     u = 0, v = 2;
-    //     if ( t1 > t0 ) t0 = t1, u = 1;
-    //     if ( t3 > t2 ) t2 = t3, v = 3;
-    //     k = t0 > t2 ? u : v;
-    //     val = k;
-
-    //     t0 = GET_VALUE(4); t1 = GET_VALUE(5);
-    //     t2 = GET_VALUE(6); t3 = GET_VALUE(7);
-    //     u = 0, v = 2;
-    //     if ( t1 > t0 ) t0 = t1, u = 1;
-    //     if ( t3 > t2 ) t2 = t3, v = 3;
-    //     k = t0 > t2 ? u : v;
-    //     val |= k << 2;
-
-    //     t0 = GET_VALUE(8); t1 = GET_VALUE(9);
-    //     t2 = GET_VALUE(10); t3 = GET_VALUE(11);
-    //     u = 0, v = 2;
-    //     if ( t1 > t0 ) t0 = t1, u = 1;
-    //     if ( t3 > t2 ) t2 = t3, v = 3;
-    //     k = t0 > t2 ? u : v;
-    //     val |= k << 4;
-
-    //     t0 = GET_VALUE(12); t1 = GET_VALUE(13);
-    //     t2 = GET_VALUE(14); t3 = GET_VALUE(15);
-    //     u = 0, v = 2;
-    //     if ( t1 > t0 ) t0 = t1, u = 1;
-    //     if ( t3 > t2 ) t2 = t3, v = 3;
-    //     k = t0 > t2 ? u : v;
-    //     val |= k << 6;
-
-    //     desc[i] = (uchar)val;
-    //   }
-    // } else
-    //   CV_Error( Error::StsBadSize, "Wrong wta_k. It can be only 2, 3 or 4." );
-
-
-#undef GET_VALUE
   }
   double desp_compute_end = omp_get_wtime();
   printf("[Desp Comp Time]: %.4lf us : from %.4lf to %.4lf\n",
