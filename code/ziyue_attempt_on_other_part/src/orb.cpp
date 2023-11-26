@@ -173,7 +173,7 @@ computeOrbDescriptors( const Mat& imagePyramid, const std::vector<Rect>& layerIn
 static void initializeOrbPattern( const Point* pattern0, std::vector<Point>& pattern, int ntuples, int tupleSize, int poolSize )
 {
   RNG rng(0x12345678);
-  int i, k, k1;
+  int i, j, k, k1;
   pattern.resize(ntuples * tupleSize);
 
   // TODO: Parallel - optimized by Ziyue
@@ -470,11 +470,12 @@ static void makeRandomPattern(int patchSize, Point* pattern, int npoints)
   RNG rng(0x34985739); // we always start with a fixed seed,
   // to make patterns the same on each run
   // TODO: Parallel - optimized by Ziyue
+  int i;
   double compute_start = omp_get_wtime();
   # pragma omp parallel num_threads(4)
   {
     #pragma omp for schedule(dynamic)
-    for ( int i = 0; i < npoints; i++ ) {
+    for (i = 0; i < npoints; i++ ) {
       pattern[i].x = rng.uniform(-patchSize / 2, patchSize / 2 + 1);
       pattern[i].y = rng.uniform(-patchSize / 2, patchSize / 2 + 1);
     }
