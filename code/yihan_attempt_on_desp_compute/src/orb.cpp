@@ -43,6 +43,8 @@
   #define CV_IMPL_ADD(x)
 #endif
 
+extern int num_threads_omp;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 namespace cv
@@ -102,9 +104,7 @@ computeOrbDescriptors( const Mat& imagePyramid, const std::vector<Rect>& layerIn
   int tmp1, tmp2, nkeypoints = (int)keypoints.size();
   // int j, i, nkeypoints = (int)keypoints.size();
 
-  // TODO: parallel
   double desp_compute_start = omp_get_wtime();
-
   float a[nkeypoints];
   float b[nkeypoints];
   const uchar* center[nkeypoints];
@@ -116,7 +116,7 @@ computeOrbDescriptors( const Mat& imagePyramid, const std::vector<Rect>& layerIn
    iy = cvRound(y), \
    *(center[j] + iy*step + ix) )
 
-  # pragma omp parallel num_threads(4)
+  # pragma omp parallel num_threads(num_threads_omp)
   {
 
     # pragma omp for schedule(dynamic)
@@ -458,13 +458,16 @@ static void makeRandomPattern(int patchSize, Point* pattern, int npoints)
 {
   RNG rng(0x34985739); // we always start with a fixed seed,
   // to make patterns the same on each run
-  // TODO: Parallel
-  for ( int i = 0; i < npoints; i++ ) {
-    pattern[i].x = rng.uniform(-patchSize / 2, patchSize / 2 + 1);
-    pattern[i].y = rng.uniform(-patchSize / 2, patchSize / 2 + 1);
+  // TODO: Parallel - optimized by Ziyue
+  # pragma omp parallel num_threads(num_threads_omp)
+  {
+    #pragma omp for schedule(dynamic)
+    for ( int i = 0; i < npoints; i++ ) {
+      pattern[i].x = rng.uniform(-patchSize / 2, patchSize / 2 + 1);
+      pattern[i].y = rng.uniform(-patchSize / 2, patchSize / 2 + 1);
+    }
   }
 }
-
 
 static inline float getScale(int level, int firstLevel, double scaleFactor)
 {
