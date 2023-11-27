@@ -177,14 +177,14 @@ static void initializeOrbPattern( const Point* pattern0, std::vector<Point>& pat
   pattern.resize(ntuples * tupleSize);
 
   // TODO: Parallel - optimized by Ziyue
-  double compute_start = omp_get_wtime();
+  double desp_compute_start = omp_get_wtime();
   # pragma omp parallel num_threads(4)
   {
     # pragma omp for schedule(dynamic)
     for ( i = 0; i < ntuples * tupleSize; i++ ) {
       j = i / tupleSize;
       k = i % tupleSize;
-      // for (;;) {
+       for (;;) {
         int idx = rng.uniform(0, poolSize);
         Point pt = pattern0[idx];
         for ( k1 = 0; k1 < k; k1++ )
@@ -194,11 +194,11 @@ static void initializeOrbPattern( const Point* pattern0, std::vector<Point>& pat
           pattern[tupleSize * j + k] = pt;
           break;
         }
-      // }
+       }
       
     }
   }
-  double compute_end = omp_get_wtime();
+  double desp_compute_end = omp_get_wtime();
   printf("[Desp Comp Time]: %.4lf us : from %.4lf to %.4lf\n",
          (desp_compute_end - desp_compute_start) * 1000000,
          desp_compute_start * 1000000,
@@ -471,7 +471,7 @@ static void makeRandomPattern(int patchSize, Point* pattern, int npoints)
   // to make patterns the same on each run
   // TODO: Parallel - optimized by Ziyue
   int i;
-  double compute_start = omp_get_wtime();
+  double desp_compute_start = omp_get_wtime();
   # pragma omp parallel num_threads(4)
   {
     #pragma omp for schedule(dynamic)
@@ -480,7 +480,7 @@ static void makeRandomPattern(int patchSize, Point* pattern, int npoints)
       pattern[i].y = rng.uniform(-patchSize / 2, patchSize / 2 + 1);
     }
   }
-  double compute_end = omp_get_wtime();
+  double desp_compute_end = omp_get_wtime();
   printf("[Desp Comp Time]: %.4lf us : from %.4lf to %.4lf\n",
          (desp_compute_end - desp_compute_start) * 1000000,
          desp_compute_start * 1000000,
@@ -606,20 +606,25 @@ static void computeKeyPoints(const Mat& imagePyramid,
   int sumFeatures = 0;
   // TODO: Parallel - Optimized by Ziyue
   // probably not parallel cound be faster
-  double compute_start = omp_get_wtime();
+
+  double desp_compute_start = omp_get_wtime();
+  omp_lock_t locks[nlevels - 1];
+  for(int i = 0; i < nlevels - 1; i++){
+    omp_init_lock(&(locks[i]));
+  }
   # pragma omp parallel num_threads(4)
   {
     # pragma omp parallel for schedule(dynamic)
     for ( level = 0; level < nlevels - 1; level++ ) {
       nfeaturesPerLevel[level] = cvRound(ndesiredFeaturesPerScale);
       // synchronization, not sure which one better so choose lock
-      omp_set_lock(&locks[level])
+      omp_set_lock(&locks[level]);
       sumFeatures += nfeaturesPerLevel[level];
       ndesiredFeaturesPerScale *= factor;
-      omp_unset_lock(&locks[level])
+       omp_unset_lock(&locks[level]);
     }
   }
-  double compute_end = omp_get_wtime();
+  double desp_compute_end = omp_get_wtime();
   printf("[Desp Comp Time]: %.4lf us : from %.4lf to %.4lf\n",
          (desp_compute_end - desp_compute_start) * 1000000,
          desp_compute_start * 1000000,
