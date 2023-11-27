@@ -1,13 +1,13 @@
 git clone https://github.com/opencv/opencv.git
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
-git checkout 4.3.0 #可选操作 指定安装版本
+git checkout 4.8.0 #可选操作 指定安装版本
 cd ..
 cd opencv
-git checkout 4.3.0 #可选操作 指定安装版本
+git checkout 4.8.0 #可选操作 指定安装版本
 mkdir build && cd build
 module load cmake-3.22
-module load gcc-5.2
+module load gcc-5.2.0
 module load cuda-10.2
 
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=~/opencv-gpu-4.3.0 -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules/ -DWITH_TBB=OFF -DWITH_OPENMP=OFF -DWITH_CUDA=ON -DBUILD_opencv_gpu=ON -DBUILD_opencv_gpuarithm=ON -DENABLE_FAST_MATH=ON -DCUDA_FAST_MATH=ON -DWITH_CUBLAS=ON -DOPENCV_GENERATE_PKGCONFIG=ON -DBUILD_opencv_python3=OFF -DBUILD_opencv_java=OFF -DBUILD_EXAMPLES=OFF
