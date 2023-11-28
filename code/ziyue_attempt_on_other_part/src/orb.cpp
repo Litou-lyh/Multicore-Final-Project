@@ -597,33 +597,33 @@ static void computeKeyPoints(const Mat& imagePyramid,
 
   int sumFeatures = 0;
   // TODO: Parallel
-  // for ( level = 0; level < nlevels - 1; level++ ) {
-  //   nfeaturesPerLevel[level] = cvRound(ndesiredFeaturesPerScale);
-  //   sumFeatures += nfeaturesPerLevel[level];
-  //   ndesiredFeaturesPerScale *= factor;
+  for ( level = 0; level < nlevels - 1; level++ ) {
+    nfeaturesPerLevel[level] = cvRound(ndesiredFeaturesPerScale);
+    sumFeatures += nfeaturesPerLevel[level];
+    ndesiredFeaturesPerScale *= factor;
+  }
+  // double desp_compute_start = omp_get_wtime();
+  // omp_lock_t locks[nlevels - 1];
+  // for(int i = 0; i < nlevels - 1; i++){
+  //   omp_init_lock(&(locks[i]));
   // }
-  double desp_compute_start = omp_get_wtime();
-  omp_lock_t locks[nlevels - 1];
-  for(int i = 0; i < nlevels - 1; i++){
-    omp_init_lock(&(locks[i]));
-  }
-  # pragma omp parallel num_threads(4)
-  {
-    # pragma omp parallel for 
-    for ( level = 0; level < nlevels - 1; level++ ) {
-      nfeaturesPerLevel[level] = cvRound(ndesiredFeaturesPerScale);
-      // synchronization, not sure which one better so choose lock
-      omp_set_lock(&locks[level]);
-      sumFeatures += nfeaturesPerLevel[level];
-      ndesiredFeaturesPerScale *= factor;
-       omp_unset_lock(&locks[level]);
-    }
-  }
-  double desp_compute_end = omp_get_wtime();
-  printf("[Desp Comp Time]: %.4lf us : from %.4lf to %.4lf\n",
-         (desp_compute_end - desp_compute_start) * 1000000,
-         desp_compute_start * 1000000,
-         desp_compute_end * 1000000);
+  // # pragma omp parallel num_threads(4)
+  // {
+  //   # pragma omp parallel for 
+  //   for ( level = 0; level < nlevels - 1; level++ ) {
+  //     nfeaturesPerLevel[level] = cvRound(ndesiredFeaturesPerScale);
+  //     // synchronization, not sure which one better so choose lock
+  //     omp_set_lock(&locks[level]);
+  //     sumFeatures += nfeaturesPerLevel[level];
+  //     ndesiredFeaturesPerScale *= factor;
+  //      omp_unset_lock(&locks[level]);
+  //   }
+  // }
+  // double desp_compute_end = omp_get_wtime();
+  // printf("[Desp Comp Time]: %.4lf us : from %.4lf to %.4lf\n",
+  //        (desp_compute_end - desp_compute_start) * 1000000,
+  //        desp_compute_start * 1000000,
+  //        desp_compute_end * 1000000);
   nfeaturesPerLevel[nlevels - 1] = std::max(nfeatures - sumFeatures, 0);
 
   // Make sure we forget about what is too close to the boundary
