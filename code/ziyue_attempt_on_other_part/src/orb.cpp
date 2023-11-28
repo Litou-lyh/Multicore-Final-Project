@@ -119,7 +119,7 @@ computeOrbDescriptors( const Mat& imagePyramid, const std::vector<Rect>& layerIn
   # pragma omp parallel num_threads(4)
   {
 
-    # pragma omp for schedule(dynamic)
+    # pragma omp for 
     for (int j = 0; j < nkeypoints; j++) {
       const KeyPoint& kpt = keypoints[j];
       const Rect& layer = layerInfo[kpt.octave];
@@ -129,7 +129,7 @@ computeOrbDescriptors( const Mat& imagePyramid, const std::vector<Rect>& layerIn
                                           cvRound(kpt.pt.x * (1.f / layerScale[kpt.octave])) + layerInfo[kpt.octave].x);
     }
 
-    # pragma omp for schedule(dynamic)
+    # pragma omp for 
     for (int j = 0; j < nkeypoints * dsize; j++ ) {
       int k = j / dsize;
       int i = j % dsize;
@@ -180,7 +180,7 @@ static void initializeOrbPattern( const Point* pattern0, std::vector<Point>& pat
   double desp_compute_start = omp_get_wtime();
   # pragma omp parallel num_threads(4)
   {
-    # pragma omp for schedule(dynamic)
+    # pragma omp for 
     for ( i = 0; i < ntuples * tupleSize; i++ ) {
       j = i / tupleSize;
       k = i % tupleSize;
@@ -474,7 +474,7 @@ static void makeRandomPattern(int patchSize, Point* pattern, int npoints)
   double desp_compute_start = omp_get_wtime();
   # pragma omp parallel num_threads(4)
   {
-    #pragma omp for schedule(dynamic)
+    #pragma omp for 
     for (i = 0; i < npoints; i++ ) {
       pattern[i].x = rng.uniform(-patchSize / 2, patchSize / 2 + 1);
       pattern[i].y = rng.uniform(-patchSize / 2, patchSize / 2 + 1);
@@ -614,7 +614,7 @@ static void computeKeyPoints(const Mat& imagePyramid,
   }
   # pragma omp parallel num_threads(4)
   {
-    # pragma omp parallel for schedule(dynamic)
+    # pragma omp parallel for 
     for ( level = 0; level < nlevels - 1; level++ ) {
       nfeaturesPerLevel[level] = cvRound(ndesiredFeaturesPerScale);
       // synchronization, not sure which one better so choose lock
