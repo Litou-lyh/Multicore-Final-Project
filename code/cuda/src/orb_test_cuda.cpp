@@ -3,6 +3,7 @@
 #include <vector>
 #include <opencv2/opencv.hpp>
 #include <opencv2/cudafeatures2d.hpp>
+#include <omp.h>
 
 void writeKeypoints(const std::vector<cv::KeyPoint>& keypoints, const std::string& filename) {
     std::ofstream outputFile(filename);
@@ -60,7 +61,7 @@ int main(int argc, char** argv) {
         std::cout << "Usage: ./feature_extractor <path_to_image> <path_to_keypoints_file> <path_to_descriptors_file>" << std::endl;
         return -1;
     }
-
+    double program_start = omp_get_wtime();
     // Load the image
     cv::Mat image = cv::imread(argv[1], cv::IMREAD_GRAYSCALE);
 
@@ -94,21 +95,23 @@ int main(int argc, char** argv) {
 
     // Initialize ORB detector
     cv::Ptr<cv::cuda::ORB> orb = cv::cuda::ORB::create();
-
+    orb->setBlurForDescriptor(true);
     // Initialize cuda Mats
     cv::cuda::GpuMat image_gpu;
     cv::cuda::GpuMat descriptors_gpu;
-
+    double compute_start = omp_get_wtime();
     // upload image to gpu
     image_gpu.upload(image);
 
+    double real_start = omp_get_wtime();
     // Compute descriptors for the detected keypoints
     cv::Mat descriptors;
     orb->compute(image_gpu, keypoints, descriptors_gpu);
-
+    double real_end = omp_get_wtime();
     // download image from gpu
     descriptors_gpu.download(descriptors);
-
+    double compute_end = omp_get_wtime();
+    
     // Write descriptors to file
     try {
         writeDescriptors(descriptors, argv[3]);
@@ -117,6 +120,20 @@ int main(int argc, char** argv) {
         std::cerr << "Error writing descriptors: " << e.what() << std::endl;
         return -1;
     }
+    double program_end = omp_get_wtime();
+    printf("[Total Comp Time]: %.4lf us : from %.4lf to %.4lf\n",
+         (compute_end - compute_start) * 1000000,
+         compute_end * 1000000,
+         compute_start * 1000000);
+    printf("[Total Exec Time]: %.4lf us : from %.4lf to %.4lf\n",
+         (program_end - program_start) * 1000000,
+         program_start * 1000000,
+         program_end * 1000000);
 
+    printf("[Total Real Time]: %.4lf us : from %.4lf to %.4lf\n",
+         (real_end - real_start) * 1000000,
+         real_start * 1000000,
+         real_end * 1000000);
+   
     return 0;
 }
