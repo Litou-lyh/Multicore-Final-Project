@@ -1,0 +1,6 @@
+Keypoints have been read from ../../../keypoints/keypoints_2000.txt
+[Desp Comp Time]: 20271.7874 us : from 4598558387817.1514 to 4598558408088.9395
+[Do Desp Time]: 142786.4870 us : from 4598558265341.5898 to 4598558408128.0771
+Descriptors have been written to output_dir
+[Total Comp Time]: 175708.8713 us : from 4598558408422.1611 to 4598558232713.2900
+[Total Exec Time]: 250708.6545 us : from 4598558189020.5283 to 4598558439729.1826
