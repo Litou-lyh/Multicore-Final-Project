@@ -5,6 +5,10 @@
 #include <opencv2/features2d.hpp>
 #include <omp.h>
 
+
+int num_threads_omp = 1;
+
+
 void writeKeypoints(const std::vector<cv::KeyPoint>& keypoints, const std::string& filename)
 {
   std::ofstream outputFile(filename);
@@ -61,11 +65,12 @@ void writeDescriptors(const cv::Mat& descriptors, const std::string& filename)
 int main(int argc, char** argv)
 {
   // Check for correct number of arguments
-  if (argc != 4) {
-    std::cout << "Usage: ./feature_extractor <path_to_image> <path_to_keypoints_file> <path_to_descriptors_file>" << std::endl;
+  if (argc != 5) {
+    std::cout << "Usage: ./feature_extractor <path_to_image> <path_to_keypoints_file> <path_to_descriptors_file> <num_threads>" << std::endl;
     return -1;
   }
 
+  num_threads_omp = strtol(argv[4], NULL, 10);
 
   double program_start = omp_get_wtime();
   // Load the image

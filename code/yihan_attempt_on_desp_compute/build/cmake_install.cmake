@@ -1,4 +1,4 @@
-# Install script for directory: /home/yl10798/work/multicore/Multicore-Final-Project/code/yihan_attempt_on_desp_compute
+# Install script for directory: /home/yl10798/multicore/project/Multicore-Final-Project/code/yihan_attempt_on_desp_compute
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/yl10798/work/multicore/Multicore-Final-Project/code/yihan_attempt_on_desp_compute/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/yl10798/multicore/project/Multicore-Final-Project/code/yihan_attempt_on_desp_compute/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
