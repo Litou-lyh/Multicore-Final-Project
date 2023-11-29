@@ -1,0 +1,5 @@
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_2000.txt
+[Descr Comp Time]: 10583.2410 us : from 27554580990.1870 to 27554591573.4280
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc_parallel_2000_8.txt
+[Total Comp Time]: 84043.4530 us : from 27554594563.0990 to 27554510519.6460
+[Total Exec Time]: 129156.3190 us : from 27554475529.9150 to 27554604686.2340

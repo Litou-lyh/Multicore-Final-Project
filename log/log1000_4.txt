@@ -1,0 +1,126 @@
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 16304.5960 us : from 23060169733.8670 to 23060186038.4630
+[Do Desp Time]: 57376.5000 us : from 23060128686.3380 to 23060186062.8380
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 82792.5100 us : from 23060188254.4640 to 23060105461.9540
+[Total Exec Time]: 121307.6960 us : from 23060072978.7790 to 23060194286.4750
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 18281.2680 us : from 23374967055.6230 to 23374985336.8910
+[Do Desp Time]: 66416.1710 us : from 23374918959.8340 to 23374985376.0050
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 93301.0170 us : from 23374987941.1900 to 23374894640.1730
+[Total Exec Time]: 136803.0000 us : from 23374857206.6590 to 23374994009.6590
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 19063.0130 us : from 23375120763.9030 to 23375139826.9160
+[Do Desp Time]: 64714.0160 us : from 23375075154.9480 to 23375139868.9640
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 90738.4560 us : from 23375142825.8440 to 23375052087.3880
+[Total Exec Time]: 132145.8600 us : from 23375017003.0400 to 23375149148.9000
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 18454.8430 us : from 23375273368.1050 to 23375291822.9480
+[Do Desp Time]: 64483.0140 us : from 23375227382.6440 to 23375291865.6580
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 88926.1710 us : from 23375294167.9010 to 23375205241.7300
+[Total Exec Time]: 129344.7130 us : from 23375172097.4270 to 23375301442.1400
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 18695.7450 us : from 23375426024.4140 to 23375444720.1590
+[Do Desp Time]: 65518.5840 us : from 23375379264.0620 to 23375444782.6460
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 91516.1830 us : from 23375447659.8260 to 23375356143.6430
+[Total Exec Time]: 131689.8210 us : from 23375322683.8130 to 23375454373.6340
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 18443.4830 us : from 23375574793.1650 to 23375593236.6480
+[Do Desp Time]: 62914.8960 us : from 23375530367.3470 to 23375593282.2430
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 88627.7830 us : from 23375596781.9500 to 23375508154.1670
+[Total Exec Time]: 125602.9220 us : from 23375476977.9310 to 23375602580.8530
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 19099.4510 us : from 23415456359.1810 to 23415475458.6320
+[Do Desp Time]: 64392.1790 us : from 23415411118.8720 to 23415475511.0510
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 90993.2080 us : from 23415478152.1480 to 23415387158.9400
+[Total Exec Time]: 129394.0940 us : from 23415354282.5240 to 23415483676.6180
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 17890.8070 us : from 23415609437.2310 to 23415627328.0380
+[Do Desp Time]: 62776.6910 us : from 23415564595.9200 to 23415627372.6110
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 87768.8580 us : from 23415629698.5690 to 23415541929.7110
+[Total Exec Time]: 127450.1820 us : from 23415507697.1140 to 23415635147.2960
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 17937.2290 us : from 23415757853.0610 to 23415775790.2900
+[Do Desp Time]: 65749.2010 us : from 23415710080.3830 to 23415775829.5840
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 91044.1040 us : from 23415778391.8140 to 23415687347.7100
+[Total Exec Time]: 129199.5650 us : from 23415654566.3770 to 23415783765.9420
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 17043.6500 us : from 23415900921.2380 to 23415917964.8880
+[Do Desp Time]: 58970.2160 us : from 23415859075.3430 to 23415918045.5590
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 83781.2630 us : from 23415920873.4870 to 23415837092.2240
+[Total Exec Time]: 120859.2550 us : from 23415805117.5520 to 23415925976.8070
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 17663.0800 us : from 23416046331.1470 to 23416063994.2270
+[Do Desp Time]: 61822.0890 us : from 23416002206.2020 to 23416064028.2910
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 86843.2140 us : from 23416066552.7300 to 23415979709.5160
+[Total Exec Time]: 123373.1600 us : from 23415948354.4250 to 23416071727.5850
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 17481.1100 us : from 23455414880.9970 to 23455432362.1070
+[Do Desp Time]: 60581.6350 us : from 23455371816.6700 to 23455432398.3050
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 85428.3430 us : from 23455434703.2030 to 23455349274.8600
+[Total Exec Time]: 123263.3340 us : from 23455317496.4450 to 23455440759.7790
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 16831.1120 us : from 23455562425.7460 to 23455579256.8580
+[Do Desp Time]: 58246.2190 us : from 23455521052.7370 to 23455579298.9560
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 83865.9200 us : from 23455582198.4130 to 23455498332.4930
+[Total Exec Time]: 121915.9110 us : from 23455466444.4220 to 23455588360.3330
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 16999.9880 us : from 23455708607.7610 to 23455725607.7490
+[Do Desp Time]: 59240.0820 us : from 23455666405.2680 to 23455725645.3500
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 83118.3550 us : from 23455727834.6110 to 23455644716.2560
+[Total Exec Time]: 120675.9770 us : from 23455612564.7520 to 23455733240.7290
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 16967.9880 us : from 23455854560.1470 to 23455871528.1350
+[Do Desp Time]: 59851.9480 us : from 23455811714.1280 to 23455871566.0760
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 84143.6970 us : from 23455873815.8810 to 23455789672.1840
+[Total Exec Time]: 122115.4140 us : from 23455758704.1080 to 23455880819.5220
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 17318.6050 us : from 23456002982.7040 to 23456020301.3090
+[Do Desp Time]: 60604.1770 us : from 23455959738.9110 to 23456020343.0880
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 85470.0760 us : from 23456022616.1560 to 23455937146.0800
+[Total Exec Time]: 123080.4260 us : from 23455904947.9790 to 23456028028.4050
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 17197.6180 us : from 23471014673.8050 to 23471031871.4230
+[Do Desp Time]: 60711.3630 us : from 23470971198.6630 to 23471031910.0260
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 88423.8700 us : from 23471034152.7470 to 23470945728.8770
+[Total Exec Time]: 129320.2470 us : from 23470911310.8580 to 23471040631.1050
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 17908.8610 us : from 23471164370.0440 to 23471182278.9050
+[Do Desp Time]: 61197.8900 us : from 23471121112.4340 to 23471182310.3240
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 86854.8750 us : from 23471184924.5310 to 23471098069.6560
+[Total Exec Time]: 124376.2590 us : from 23471065929.4430 to 23471190305.7020
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 17073.1850 us : from 23471315593.0940 to 23471332666.2790
+[Do Desp Time]: 59914.9960 us : from 23471272788.0620 to 23471332703.0580
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 87529.9560 us : from 23471335177.1030 to 23471247647.1470
+[Total Exec Time]: 126782.4170 us : from 23471215391.6440 to 23471342174.0610
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 17698.9270 us : from 23471466239.0070 to 23471483937.9340
+[Do Desp Time]: 59668.9150 us : from 23471424299.5160 to 23471483968.4310
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 84090.5120 us : from 23471486287.0050 to 23471402196.4930
+[Total Exec Time]: 124016.3500 us : from 23471368435.7200 to 23471492452.0700
+Keypoints have been read from /home/yl10798/work/multicore/Multicore-Final-Project/kpts/keypoints_1000.txt
+[Desp Comp Time]: 18191.2350 us : from 23471614853.3590 to 23471633044.5940
+[Do Desp Time]: 61408.0180 us : from 23471571674.7570 to 23471633082.7750
+Descriptors have been written to /home/yl10798/work/multicore/Multicore-Final-Project/desc/desc1000_4.txt
+[Total Comp Time]: 85612.0220 us : from 23471635468.7350 to 23471549856.7130
+[Total Exec Time]: 125396.4450 us : from 23471517390.6100 to 23471642787.0550
