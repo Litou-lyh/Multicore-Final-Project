@@ -5,7 +5,7 @@ EXEC=${EXEC:-"original cuda parallel"}
 BUILD=${BUILD:-"build"}
 ROOTDIR=$(pwd)
 LOGDIR=${LOGDIR:-${ROOTDIR}/log}
-SRCDIR=${SRCDIR:-${ROOTDIR}/code}
+SRCDIR=${SRCDIR:-${ROOTDIR}/src}
 cd ${SRCDIR}
 for E in ${EXEC}; do
 	echo "[******* Compile ${EXEC} ********]"
