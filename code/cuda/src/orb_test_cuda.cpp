@@ -94,7 +94,7 @@ int main(int argc, char** argv) {
 
     // Initialize ORB detector
     cv::Ptr<cv::cuda::ORB> orb = cv::cuda::ORB::create();
-
+    orb->setBlurForDescriptor(true);
     // Initialize cuda Mats
     cv::cuda::GpuMat image_gpu;
     cv::cuda::GpuMat descriptors_gpu;

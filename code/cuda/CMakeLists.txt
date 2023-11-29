@@ -20,9 +20,9 @@ set(CXX_STANDARD C++11)
 # choose your version and uncomment others
 
 # Yihan's cuda version @ cudax.cims.nyu.edu
-# set(CMAKE_CXX_COMPILER /misc/linux/centos7/x86_64/local/stow/gcc-11.2/bin/g++)
-# set(OpenCV_DIR /home/yl10798/opencv-gpu-4.8.0/)
-# set(OpenCV_INCLUDE_DIRS /home/yl10798/opencv-gpu-4.8.0/include/opencv4)
+set(CMAKE_CXX_COMPILER /misc/linux/centos7/x86_64/local/stow/gcc-11.2/bin/g++)
+set(OpenCV_DIR /home/yl10798/opencv-gpu-4.8.0/)
+set(OpenCV_INCLUDE_DIRS /home/yl10798/opencv-gpu-4.8.0/include/opencv4)
 # find_package(OpenCV REQUIRED)
 
 # wcy's version @ vm

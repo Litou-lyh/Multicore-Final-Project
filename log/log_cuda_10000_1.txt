@@ -1,0 +1,5 @@
+Keypoints have been read from /home/yl10798/multicore/project/Multicore-Final-Project/kpts/keypoints_10000.txt
+Descriptors have been written to /home/yl10798/multicore/project/Multicore-Final-Project/desc/desc_cuda_10000_1.txt
+[Total Comp Time]: 458886.9214 us : from 4672118920280.9521 to 4672118461394.0303
+[Total Exec Time]: 805385.8876 us : from 4672118164065.8906 to 4672118969451.7783
+[Total Real Time]: 451238.0213 us : from 4672118468514.8457 to 4672118919752.8672

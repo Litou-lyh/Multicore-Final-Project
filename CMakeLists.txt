@@ -39,9 +39,9 @@ add_executable(ORBExtractor ${SOURCE_FILES})
 
 # Link the OpenCV libraries with your executable
 target_link_libraries(ORBExtractor ${OpenCV_LIBS})
-add_executable(ORBExtractor src/orb_test.cpp)
+add_executable(ORBExtractor1 src/orb_test.cpp)
 add_executable(ORBExtractorCuda src/orb_test_cuda.cpp)
 
-target_link_libraries(ORBExtractor ${OpenCV_LIBS})
+target_link_libraries(ORBExtractor1 ${OpenCV_LIBS})
 target_link_libraries(ORBExtractorCuda ${OpenCV_LIBS})
 

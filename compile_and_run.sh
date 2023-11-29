@@ -1,7 +1,7 @@
 
 echo "[******* Benchmark start ********] $(pwd)"
 
-EXEC=${EXEC:-"parallel original"}
+EXEC=${EXEC:-"original cuda parallel"}
 BUILD=${BUILD:-"build"}
 ROOTDIR=$(pwd)
 LOGDIR=${LOGDIR:-${ROOTDIR}/log}

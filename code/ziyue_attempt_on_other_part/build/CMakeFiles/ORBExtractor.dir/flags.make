@@ -4,7 +4,7 @@
 # compile CXX with /misc/linux/centos7/x86_64/local/stow/gcc-11.2/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/yl10798/multicore/project/Multicore-Final-Project/code/yihan_attempt_on_desp_compute/include -isystem /home/yl10798/opencv-gpu-4.8.0/include/opencv4
+CXX_INCLUDES = -I/home/yl10798/multicore/project/Multicore-Final-Project/code/ziyue_attempt_on_other_part/include -isystem /home/yl10798/opencv-gpu-4.8.0/include/opencv4
 
 CXX_FLAGS = -fopenmp -std=gnu++11
 
