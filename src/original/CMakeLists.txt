@@ -14,7 +14,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(ORBExtractor)
 set(CXX_STANDARD C++11)
-set(DCMAKE_BUILD_TYPE Debug)
+set(DCMAKE_BUILD_TYPE Release)
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 
 # !!! Important

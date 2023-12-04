@@ -14,7 +14,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(ORBExtractor)
 set(CXX_STANDARD C++11)
-
+set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 # Set your compiler and opencv path
 set(CMAKE_CXX_COMPILER /misc/linux/centos7/x86_64/local/stow/gcc-11.2/bin/g++)
 set(OpenCV_DIR /home/yl10798/opencv-gpu-4.8.0/)

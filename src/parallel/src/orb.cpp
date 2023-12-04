@@ -119,7 +119,7 @@ computeOrbDescriptors( const Mat& imagePyramid, const std::vector<Rect>& layerIn
   # pragma omp parallel num_threads(num_threads_omp)
   {
 
-    # pragma omp for
+    # pragma omp for schedule(dynamic, 256)
     for (int j = 0; j < nkeypoints; j++) {
       const KeyPoint& kpt = keypoints[j];
       const Rect& layer = layerInfo[kpt.octave];
@@ -129,7 +129,7 @@ computeOrbDescriptors( const Mat& imagePyramid, const std::vector<Rect>& layerIn
                                           cvRound(kpt.pt.x * (1.f / layerScale[kpt.octave])) + layerInfo[kpt.octave].x);
     }
 
-    # pragma omp for
+    # pragma omp for schedule(dynamic, 256)
     for (int j = 0; j < nkeypoints * dsize; j++ ) {
       int k = j / dsize;
       int i = j % dsize;
