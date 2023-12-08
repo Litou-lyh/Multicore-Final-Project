@@ -48,7 +48,7 @@ module load gcc-11.2
 module load cuda-11.4
 ```
 
-\# replace your path to install opencv at "-DCMAKE_INSTALL_PREFIX=~/opencv-gpu-4.8.0"
+\# replace your path to install opencv at `-DCMAKE_INSTALL_PREFIX=~/opencv-gpu-4.8.0`
 \# check the disk space beforehand
 
 ```shell
@@ -85,8 +85,7 @@ cd ./src/parallel
 
 sh run.sh <num_threads>
 
-
-To change input sizes and number of threads, change these two lines in "compile_and_run.sh"
+To change input sizes and number of threads, change these two lines in `compile_and_run.sh`
 line 26: 
 
 ```shell
@@ -105,8 +104,12 @@ To validate the correctness of output, try `compareOutput.sh`
 
 
 ## 3. Our Modification
-We mainly modified the file orb.cpp, the function "computeOrbDescriptor()" is the main process of orb descriptor computation.
-You can compare our version "./src/parallel/src" with serial version "./src/original/src".
+We mainly modified the file orb.cpp, the function `computeOrbDescriptor()` is the main process of orb descriptor computation.
+You can compare our version `./src/parallel/src` with serial version `./src/original/src`.
+
+Also, see our report at `./Report.pdf`
+
+
 
 ## Contact
 Please contact yl10798@nyu.edu (Mr. Yihan Li)
