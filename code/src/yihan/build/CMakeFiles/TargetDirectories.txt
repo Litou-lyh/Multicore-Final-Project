@@ -1,3 +1,0 @@
-/home/yl10798/work/multicore/Multicore-Final-Project/src/yihan/build/CMakeFiles/ORBExtractor.dir
-/home/yl10798/work/multicore/Multicore-Final-Project/src/yihan/build/CMakeFiles/edit_cache.dir
-/home/yl10798/work/multicore/Multicore-Final-Project/src/yihan/build/CMakeFiles/rebuild_cache.dir
